@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>rxs173730_PracticeWork2</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+
+		<script>
+			console.log("In Script");
+			window.onload = loadingPage;
+			console.log("On Load doen");
+
+			function loadingPage(){
+				console.log("listener attached");
+				document.getElementById("mySubmit").onclick = submitting;
+				console.log("listener attached");
+			}
+
+			function submitting(){
+				console.log("In method");
+				var username = document.getElementById("username").value;
+				var password = document.getElementById("password").value;
+				var phonenumber = document.getElementById("phonenumber").value;
+				var flag = 0;
+				var numbers = /^[0-9]+$/;
+				var allFieldMandatory = "";
+				var usernameLength = "";
+				var passwordLengh = "";
+				var phonenumberOnlyNumber = "";
+
+				if (username == "" || password == "" || phonenumber == "") {
+					flag = 1;
+					allFieldMandatory = "<br>All fields are mandatory"
+				}
+				else{
+					if (username.length<6) {
+						flag = 1;
+						usernameLength = "<br>Username should be at least 6 characters."
+					}
+					if (password.length<6) {
+						flag = 1
+						passwordLengh = "<br>Password should be at least 6 characters."
+					}
+					if (!phonenumber.match(numbers)) {
+						flag = 1;
+						phonenumberOnlyNumber = "<br>Phone number should include only numbers."
+					}
+				}
+				if (flag == 0) {
+					document.getElementById("status").className = "valid"
+					document.getElementById("status").innerHTML = "Success"
+				}	
+				else{
+					document.getElementById("status").className = "failure"
+					document.getElementById("status").innerHTML = allFieldMandatory.concat(usernameLength,passwordLengh,phonenumberOnlyNumber);
+				}
+
+			}
+
+		</script>
+
+	</head>
+
+
+
+
+	<body>
+		<h1>Login Form</h1>
+
+		<form>
+
+			<div>
+				<label><b>Username</b></label><br>
+				<input type="text" placeholder="Enter Password" name="username" id="username"><br><br>
+
+				<label><b>Password</b></label><br>
+				<input type="password" placeholder="Enter Password" name="Password" id="password"><br><br>
+
+				<label><b>Phone Number</b></label><br>
+				<input type="text" placeholder="Enter Phone Number" name="phonenumber" id="phonenumber"><br><br>
+
+			</div>
+
+			<div>
+				<input id = "mySubmit" type="button" name="validate." value="validate"/>
+			</div>
+
+			<p id="status"></p>
+		
+		</form>
+
+
+	</body>
+</html>

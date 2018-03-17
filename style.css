@@ -1,0 +1,26 @@
+.valid{
+	color: green;
+}
+
+.failure{
+	color: red;
+}
+
+form{
+	border: 3px solid #CDF1AE
+}
+
+h1{
+	text-align: center;
+	background: #F1ECAE;
+	margin: 0;
+	padding: 0;
+}
+			
+button{
+	background-color: #4CAF50
+}
+
+div{
+	text-align: center;
+}
